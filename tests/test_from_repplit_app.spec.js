@@ -101,46 +101,4 @@ test('Test cuddle buddy zone loveable', async ({ page })  => {
     await page.pause();
 
 
-/*
-    const captchaText = await page.locator('[data-testid="captcha-question"]').innerText();
-    const match = captchaText.match(/(\d+)\s*([\+\-\x\*])\s*(\d+)/);
 
-if (!match) {
-  throw new Error('Captcha tidak terbaca');
-}
-
-const num1 = parseInt(match[1]);
-const operator = match[2];
-const num2 = parseInt(match[3]);
-
-let result;
-
-switch (operator) {
-  case '+':
-    result = num1 + num2;
-    break;
-  case '-':
-    result = num1 - num2;
-    break;
-  case 'x':
-  case '*':
-    result = num1 * num2;
-    break;
-  default:
-    throw new Error('Operator tidak dikenali');
-}
-
-// Isi jawaban captcha
-await page.fill('input[placeholder="Enter the answer"]', result.toString());
-
-await page.getByTestId('login-submit').click();
-await expect(page.locator('h1')).toHaveText('Portfolio Performance');
-
-// CUSTOMERS 
-
-await page.getByTestId('nav-customers').click();
-await expect(page).toHaveURL(/customers/);
-*/
-
-
-});
