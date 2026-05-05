@@ -1,6 +1,6 @@
 import {test, expect} from 'playwright/test'
 
-test('Test cuddle buddy zone loveable', async ({ page })  => {
+test('Test automation primebank from repplit app', async ({ page })  => {
     const email = 'john.doe@nexusbank.com'
     const password = 'password123'
 
