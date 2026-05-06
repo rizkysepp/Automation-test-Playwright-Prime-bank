@@ -95,7 +95,31 @@ test('Test automation primebank from repplit app', async ({ page })  => {
     await expect(page).toHaveURL('https://test-runner--rizky08septian.replit.app/transactions');
 
     //NEWS
-    await page.getByTestId('')
+    await page.getByTestId('nav-news').click();
+    await expect(page).toHaveURL('https://test-runner--rizky08septian.replit.app/news');
+    await page.getByTestId('button-news-category-market').click();
+    await page.getByTestId('button-news-category-economy').click();
+    await page.getByTestId('button-news-category-banking').click();
+    await page.getByTestId('button-news-category-funds').click();
+    await page.getByTestId('button-news-category-crypto').click();
+    await page.getByTestId('button-news-category-regulation').click();
+    await page.getByTestId('input-news-search').fill('inflation');
+
+    //INCOME & EXPENSE
+    await page.getByText('Income & Expense').click();
+    await expect(page).toHaveURL('https://test-runner--rizky08septian.replit.app/income-expense');
+    await page.locator('//button[text()="3M"]').click();
+    await page.locator('//button[text()="6M"]').click();
+    await page.locator('//button[text()="1Y"]').click();
+
+    //REPORTS
+    await page.locator('//span[text()="Reports"]').click();
+    await expect(page).toHaveURL('https://test-runner--rizky08septian.replit.app/reports');
+    await page.evaluate(() => {
+      window.print = () => {};
+    });
+
+    await page.getByTestId('button-download-pdf').click();
 
 
     await page.pause();
