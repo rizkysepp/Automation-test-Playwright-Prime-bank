@@ -116,14 +116,24 @@ test('Test automation primebank from repplit app', async ({ page })  => {
     await page.locator('//span[text()="Reports"]').click();
     await expect(page).toHaveURL('https://test-runner--rizky08septian.replit.app/reports');
     await page.evaluate(() => {
-      window.print = () => {};
+      window.print = () => {
+        console.log('Print blocked by automation');
+      };
     });
-
     await page.getByTestId('button-download-pdf').click();
+    await page.getByTestId('input-report-date').click();
 
-
+    //CUSTOMER PROFILE
+    await page.getByText('Customer Profile').click();
+    await expect(page).toHaveURL('https://test-runner--rizky08septian.replit.app/customer');
+    await page.getByText('Edit Profile').click();
+    await page.locator('//input[@value="John Doe"]').fill('Beckham')
+    await expect(
+      page.locator('//input[@value="Beckham"]')
+    ).toHaveValue('Beckham'); 
+    await page.locator('//input[@placeholder="+1 (555) 000-0000"]').fill('0812345')
+   
+    
     await page.pause();
-
-
 
 });
