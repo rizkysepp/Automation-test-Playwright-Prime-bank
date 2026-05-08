@@ -127,13 +127,44 @@ test('Test automation primebank from repplit app', async ({ page })  => {
     await page.getByText('Customer Profile').click();
     await expect(page).toHaveURL('https://test-runner--rizky08septian.replit.app/customer');
     await page.getByText('Edit Profile').click();
-    await page.locator('//input[@value="John Doe"]').fill('Beckham')
+    await page.locator('//input[@value="John Doe"]').fill('Beckham'); //Dynamic value
     await expect(
       page.locator('//input[@value="Beckham"]')
     ).toHaveValue('Beckham'); 
-    await page.locator('//input[@placeholder="+1 (555) 000-0000"]').fill('0812345')
-   
-    
+    await page.locator('//input[@placeholder="+1 (555) 000-0000"]').fill('0812345'); //Dynamic value
+    await page.locator('//input[@placeholder="123 Financial District, NY 10005"]').fill('Boulevard Street')
+    await expect(
+      page.locator('//input[@placeholder="123 Financial District, NY 10005"]')
+    ).toHaveValue('Boulevard Street');
+    await page.getByTestId('button-edit-extras').click();
+    await page.locator('//input[@placeholder="e.g., Acme Corporation"]').fill('KPMG');
+    await expect(
+      page.locator('//input[@placeholder="e.g., Acme Corporation"]')
+    ).toHaveValue('KPMG');
+    await page.locator('//input[@placeholder="e.g., Senior Manager"]').fill('Lead System Engineer');
+    await expect(
+      page.locator('//input[@placeholder="e.g., Senior Manager"]')
+    ).toHaveValue('Lead System Engineer');
+     await page.locator('//input[@placeholder="e.g., 8,500"]').fill('100000');
+    await expect(
+      page.locator('//input[@placeholder="e.g., 8,500"]')
+    ).toHaveValue('100000');
+     await page.locator('//input[@placeholder="SSN / TIN"]').fill('125555560');
+    await expect(
+      page.locator('//input[@placeholder="SSN / TIN"]')
+    ).toHaveValue('125555560');
+     await page.locator('//input[@placeholder="e.g., English"]').fill('France');
+    await expect(
+      page.locator('//input[@placeholder="e.g., English"]')
+    ).toHaveValue('France');
+    await page.getByTestId('button-save-extras').click();
+
+    //KYC VERIFICATION
+    await page.getByTestId('nav-kyc-verification').click();
+    await expect(page).toHaveURL('https://test-runner--rizky08septian.replit.app/kyc');
+
+
     await page.pause();
+
 
 });
