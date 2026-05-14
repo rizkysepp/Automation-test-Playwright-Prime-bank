@@ -162,7 +162,7 @@ test('Test automation primebank from repplit app', async ({ page })  => {
     //KYC VERIFICATION
     await page.getByTestId('nav-kyc-verification').click();
     await expect(page).toHaveURL('https://test-runner--rizky08septian.replit.app/kyc');
-    ///await page. pause
+    await page. pause
 
 
     await page.pause();
