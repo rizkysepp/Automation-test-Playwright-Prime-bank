@@ -162,8 +162,21 @@ test('Test automation primebank from repplit app', async ({ page })  => {
     //KYC VERIFICATION
     await page.getByTestId('nav-kyc-verification').click();
     await expect(page).toHaveURL('https://test-runner--rizky08septian.replit.app/kyc');
-
-
+    await page.getByText('Submit New verification').click();
+    await page.locator('//input[@placeholder="As it appears on your ID"]').fill('David Beckham');
+    await expect(
+      page.locator('//input[@placeholder="As it appears on your ID"]')
+    ).toHaveValue('David Beckham');
+    await page.locator('//input[@placeholder="Document ID number"]').fill('123456789');
+    await expect(
+      page.locator('//input[@placeholder="Document ID number"]')
+    ).toHaveValue('123456789');
+    await page.locator('//button[@id="«ra»-form-item"]').selectOption({ label: 'Passport'});
+    await page.locator('//input[@placeholder="e.g., Software Engineer, Director"]').fill('Software Engineer');
+    await expect(
+      page.locator('//input[@placeholder="e.g., Software Engineer, Director')
+    ).toHaveValue('Software Engineer');
+    await page.locator('//button[@id="«re»-form-item"]').selectOption({ label: '$50,000 - $100,000'})
     await page.pause();
 
 
